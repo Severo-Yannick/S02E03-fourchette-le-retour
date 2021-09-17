@@ -1,24 +1,30 @@
 var game = {
-  // Le nombre max
-  max: 500,
+  // Le nombre aleatoire
+  randomNumber: 0,
   // Le nombre d'essais
-  attemps:0,
-  // Le nombre cherché
-  searchedNumber: null,
-}
+  attemps: 0,
+  // Le nombre minimum
+  min: 10,
+  // Le nombre maximum
+  max: 50,
+};
 
 // Le nombre cherché
-game.searchedNumber = Math.round(Math.random() * game.max);
-console.log(game.searchedNumber);
-
-// Le nombre saisi
-var enteredNumber = parseInt(prompt("Quel est le nombre à trouver ?"));
+function searchedNumber(max, min) {
+  return Math.round(Math.random() * (max - min) + min);
+}
 
 function play() {
+  game.randomNumber = searchedNumber(game.min, game.max);
+  console.log(`Nombre aleatoire: `, game.randomNumber);
+
+  // Le nombre saisi
+  var enteredNumber = parseInt(prompt("Quel est le nombre à trouver ?"));
+
   // Tant que le nombre saisi n'est pas bon on redemande un nombre
-  while (enteredNumber !== game.searchedNumber) {
+  while (enteredNumber !== game.randomNumber) {
     // on précise si le nombre recherché est inférieur ou supérieur au nombre saisi
-    if (enteredNumber < game.searchedNumber) {
+    if (enteredNumber < game.randomNumber) {
       enteredNumber = parseInt(prompt("C'est plus"));
     } else {
       enteredNumber = parseInt(prompt("C'est moins"));
@@ -26,11 +32,11 @@ function play() {
     // on incrémente le nombre d'essais
     game.attemps += 1;
   }
-  
+
   // on est sorti de la boucle, c'est que le nombre saisi est bien le nombre cherché
   // on affiche un message de victoire
   alert(
-    "Bravo ! C'était bien " + game.searchedNumber + " - Nombre d'essais : " + game.attemps
+    "Bravo ! C'était bien " + game.randomNumber + " - Nombre d'essais : " + game.attemps
   );
 }
 
