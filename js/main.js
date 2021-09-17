@@ -2,7 +2,7 @@ var game = {
   // Le nombre aleatoire
   randomNumber: 0,
   // Le nombre d'essais
-  attemps: 0,
+  attemps: 1,
   // Le nombre minimum
   min: 10,
   // Le nombre maximum
@@ -35,7 +35,7 @@ function play() {
     // on incrémente le nombre d'essais
     game.attemps += 1;
   }
-
+  // on ajoute un essai au tableau score
   score.push(game.attemps);
 
   // on est sorti de la boucle, c'est que le nombre saisi est bien le nombre cherché
@@ -43,8 +43,17 @@ function play() {
   alert(
     "Bravo ! C'était bien " + game.randomNumber + " - Nombre d'essais : " + game.attemps
   );
+
+  // on demande au client s'il veut rejouer
+  var responseUser = confirm('Une nouvelle partie ?');
+  if (responseUser === true) {
+    console.log('il est OK pour une nouvelle partie !');
+    play();
+  } else {
+    console.log('il ne veut plus jouer...');
+  }
 }
 
-
 play();
-console.log(score);
+// Affichage du score dans la console
+console.log('le score: ' + score);
