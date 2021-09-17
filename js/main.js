@@ -9,6 +9,9 @@ var game = {
   max: 50,
 };
 
+// Le Score
+var score = [];
+
 // Le nombre cherché
 function searchedNumber(max, min) {
   return Math.round(Math.random() * (max - min) + min);
@@ -33,6 +36,8 @@ function play() {
     game.attemps += 1;
   }
 
+  score.push(game.attemps);
+
   // on est sorti de la boucle, c'est que le nombre saisi est bien le nombre cherché
   // on affiche un message de victoire
   alert(
@@ -40,4 +45,6 @@ function play() {
   );
 }
 
+
 play();
+console.log(score);
