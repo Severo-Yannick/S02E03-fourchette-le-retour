@@ -50,10 +50,15 @@ function play() {
     console.log('il est OK pour une nouvelle partie !');
     play();
   } else {
-    console.log('il ne veut plus jouer...');
+    console.log('il ne veut plus jouer, affichage du résultat');
+    // affichage des resultats dans la console
+    for (var i = 0; i < score.length; i++) {
+      console.log('Partie ' + [i+1] + ' : ' + score[i] + ' essais');
+    }
+    // Affichage du score dans la console
+    console.log(score);
   }
+
 }
 
 play();
-// Affichage du score dans la console
-console.log('le score: ' + score);
